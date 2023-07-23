@@ -29,6 +29,7 @@ def Constancia_de_trabajo():
     'mes' : fecha_actual['mes'],
     'year' : fecha_actual['year'] ,
     }
+    print("Worke")
     #doc = DocxTemplate(r"inputs/templates/constancia_trabajo.docx")
     #doc.render(context)
     #doc.save(f"outputs/{request.form.get('Nombres')}.docx")
