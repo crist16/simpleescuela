@@ -32,7 +32,7 @@ def Constancia_de_trabajo():
     print("Worke")
     doc = DocxTemplate(r"inputs/templates/constancia_trabajo.docx")
     doc.render(context)
-    #doc.save(f"outputs/{request.form.get('Nombres')}.docx")
+    doc.save(r"outputs/{request.form.get('Nombres')}.docx")
 
     return 'received'
 
