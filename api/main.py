@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def Home():
-    return "Mi aplicacion flask acaba de cambiar"
+    return "Mi aplicacion flask acaba de cambiar again"
 
 #Constancias
 
@@ -31,7 +31,7 @@ def Constancia_de_trabajo():
     }
     print("Worke")
     doc = DocxTemplate(r"inputs/templates/constancia_trabajo.docx")
-    #doc.render(context)
+    doc.render(context)
     #doc.save(f"outputs/{request.form.get('Nombres')}.docx")
 
     return 'received'
