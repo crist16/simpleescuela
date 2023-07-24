@@ -1,8 +1,9 @@
 import json
 import os
+import tempfile
 from docxtpl import DocxTemplate
 
-from flask import Flask, request
+from flask import Flask, request, send_file
 
 from utils.utils import getFullActualDate
 
@@ -29,12 +30,23 @@ def Constancia_de_trabajo():
     'mes' : fecha_actual['mes'],
     'year' : fecha_actual['year'] ,
     }
-    print("Worke")
-    doc = DocxTemplate(r"inputs/templates/constancia_trabajo.docx")
-    doc.render(context)
-    doc.save(r"outputs/{request.form.get('Nombres')}.docx")
+    # Crear un archivo temporal
+    with tempfile.NamedTemporaryFile(suffix='.docx', delete=False) as temp_file:
+        archivo_temporal = temp_file.name
 
-    return 'received'
+        # Cargar la plantilla de documento
+        doc = DocxTemplate(f'inputs/templates/constancia_trabajo.docx')
+        doc.render(context)
+        # Realizar las modificaciones necesarias en la plantilla
+        # Puedes utilizar doc.render(context) para pasarle datos dinámicos a la plantilla
+        # Guardar el documento generado en el archivo temporal
+        doc.save(archivo_temporal)
+
+        # Retornar el archivo temporal como descarga adjunta
+        return send_file(archivo_temporal, as_attachment=True)
+
+
+
 
 @app.route('/constancia_de_estudio',methods =['POST'])
 def Constancia_de_estudio():
