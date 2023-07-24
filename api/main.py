@@ -41,9 +41,10 @@ def Constancia_de_trabajo():
         # Puedes utilizar doc.render(context) para pasarle datos dinámicos a la plantilla
         # Guardar el documento generado en el archivo temporal
         doc.save(archivo_temporal)
+        ruta_absoluta = os.path.abspath(archivo_temporal)
 
         # Retornar el archivo temporal como descarga adjunta
-    return send_file(archivo_temporal, as_attachment=True)
+    return ruta_absoluta
 
 
 
