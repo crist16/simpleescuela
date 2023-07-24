@@ -17,7 +17,7 @@ def Home():
 
 @app.route('/constancia_de_trabajo', methods=['POST'])
 def Constancia_de_trabajo():
-
+    print("sfddfsd")
     fecha_actual = getFullActualDate()
 
     context = {
@@ -43,7 +43,7 @@ def Constancia_de_trabajo():
         doc.save(archivo_temporal)
 
         # Retornar el archivo temporal como descarga adjunta
-        return send_file(archivo_temporal, as_attachment=True)
+    return send_file(archivo_temporal)
 
 
 
