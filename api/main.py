@@ -43,7 +43,7 @@ def Constancia_de_trabajo():
         doc.save(archivo_temporal)
 
         # Retornar el archivo temporal como descarga adjunta
-    return send_file(archivo_temporal)
+    return archivo_temporal
 
 
 
