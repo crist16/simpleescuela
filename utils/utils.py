@@ -1,6 +1,6 @@
 from datetime import datetime
 import locale
-
+from docx2pdf import convert
 # Establecer el idioma en español
 
 
@@ -18,3 +18,8 @@ def getFullActualDate():
         'year' : year
     }
     return fecha_actual
+
+
+def ConvertToPdf(ruta_entrada , ruta_salida):    # Ruta del archivo DOCX de entrada y ruta de salida para el PDF
+
+    convert(ruta_entrada, ruta_salida)
